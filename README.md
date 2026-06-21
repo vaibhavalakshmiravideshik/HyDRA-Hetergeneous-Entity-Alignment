@@ -1,5 +1,10 @@
 # HyDRA: Heterogeneity-Aware Dynamic Retrieval and Alignment for Biomedical Entity Alignment
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Hugging Face: MeSH-SNOMED-15K](https://img.shields.io/badge/HuggingFace-MeSH--SNOMED--15K-orange)](https://huggingface.co/datasets/vaibhavalakshmiravideshik/mesh-snomed-entity-alignment-15k)
+[![Hugging Face: EMAPA-UBERON-4K](https://img.shields.io/badge/HuggingFace-EMAPA--UBERON--4K-orange)](https://huggingface.co/datasets/vaibhavalakshmiravideshik/emapa-uberon-4k)
+[![Hugging Face: MONDO-DOID-12K](https://img.shields.io/badge/HuggingFace-MONDO--DOID--12K-orange)](https://huggingface.co/datasets/vaibhavalakshmiravideshik/mondo-doid-12k)
+
 This repository contains the code for **HyDRA**, a heterogeneity-aware biomedical entity alignment framework, together with links to the three benchmark datasets introduced in the accompanying paper:
 
 **HyDRA: Heterogeneity-Aware Dynamic Retrieval and Alignment for Biomedical Entity Alignment with Benchmark Evaluation**  
@@ -116,14 +121,19 @@ This distinction is especially important for interpreting the Stage 4 LLM compon
 
 ## Repository structure
 
-After extraction, the repository contains the implementation under `hydra/`:
+The repository is organized as follows:
 
 ```text
-HyDRA-Hetergeneous-Entity-Alignment/
+HyDRA-Heterogeneous-Entity-Alignment/
+├── LICENSE
+├── .gitignore
+├── .env.example
 ├── README.md
 ├── docs/
 │   └── assets/
 │       └── hydra-pipeline-architecture.png
+├── scripts/
+│   └── reconstruct_mesh_snomed.py
 └── hydra/
     ├── README.md
     ├── __init__.py
@@ -172,6 +182,8 @@ Core dependencies listed in the repository include:
 - `huggingface-hub`
 - `ontoaligner`
 
+For reproducibility, `hydra/requirements.txt` now pins package versions for a stable reference environment.
+
 ## Running the code
 
 From inside `hydra/`:
@@ -213,6 +225,12 @@ export AZURE_OPENAI_URL="your_endpoint"
 
 The default LLM configured in the code is `gpt-4o`.
 
+You can also copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
 ## Dataset loading
 
 Dataset repository identifiers are currently configured in `hydra/config.py` as:
@@ -236,7 +254,7 @@ The manuscript discusses a recommended **80/10/10** benchmark split for future w
 
 ### Code
 
-Please add your preferred repository license if you plan to distribute the code formally.
+This repository is released under the **MIT License**; see [`LICENSE`](LICENSE).
 
 ### Datasets and ontology licensing
 
@@ -261,9 +279,15 @@ Because **SNOMED CT** is license-restricted, the complete benchmark may not alwa
 }
 ```
 
+## Reproducibility notes
+
+- A skeleton reconstruction script for the license-restricted **MeSH-SNOMED-15K** benchmark is provided at `scripts/reconstruct_mesh_snomed.py`.
+- Users must supply their own locally licensed SNOMED CT and mapping inputs before reconstruction.
+- Public Hugging Face datasets are linked below for the fully open benchmark components.
+
 ## Links
 
-- **GitHub repository**: https://github.com/vaibhavalakshmiravideshik/HyDRA-Hetergeneous-Entity-Alignment
+- **GitHub repository**: https://github.com/vaibhavalakshmiravideshik/HyDRA-Heterogeneous-Entity-Alignment
 - **MeSH-SNOMED-15K**: https://huggingface.co/datasets/vaibhavalakshmiravideshik/mesh-snomed-entity-alignment-15k
 - **EMAPA-UBERON-4K**: https://huggingface.co/datasets/vaibhavalakshmiravideshik/emapa-uberon-4k
 - **MONDO-DOID-12K**: https://huggingface.co/datasets/vaibhavalakshmiravideshik/mondo-doid-12k
