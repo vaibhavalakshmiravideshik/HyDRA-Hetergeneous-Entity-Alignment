@@ -62,6 +62,16 @@ Approximate benchmark scale from the paper:
 
 HyDRA is implemented as a five-stage pipeline:
 
+<p align="center">
+  <img src="docs/assets/hydra-pipeline-architecture.png" alt="HyDRA five-stage pipeline architecture" width="1000">
+</p>
+
+<p align="center">
+  <em>
+    Figure: HyDRA pipeline architecture showing unsupervised relation-family induction, schema-agnostic entity profiling, dense retrieval, heterogeneity-aware reranking, and final alignment resolution.
+  </em>
+</p>
+
 1. **Unsupervised Relation Family Induction**  
    Learns relation embeddings independently per KG using RotatE, clusters them with KMeans, and aligns relation families across KGs using anchor detection plus Procrustes / optimal transport.
 
@@ -111,6 +121,9 @@ After extraction, the repository contains the implementation under `hydra/`:
 ```text
 HyDRA-Hetergeneous-Entity-Alignment/
 ├── README.md
+├── docs/
+│   └── assets/
+│       └── hydra-pipeline-architecture.png
 └── hydra/
     ├── README.md
     ├── __init__.py
